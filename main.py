@@ -103,7 +103,8 @@ class GamePage(tk.Frame):
         # Add game logic and widgets here (e.g., entry for user input, submit button, etc.)
 
 class CreditsPage(tk.Frame):
-    """Credits page to display the credits of the game"""
+    """Credits page to displa
+    y the credits of the game"""
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
