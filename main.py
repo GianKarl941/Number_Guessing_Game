@@ -13,6 +13,7 @@ from tkinter import font as tkfont
 from tkinter import PhotoImage
 import pygame
 from pygame import mixer
+from NumGuessGame_Python_logic_kinterfied import NumberCipher
 # Menu class to create the main menu of the game
 class GameApp(tk.Tk):
     """Main menu class for the number guessing game"""
@@ -76,7 +77,7 @@ class StartPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="Guess How Many!", font=controller.title_font)
+        label = tk.Label(self, text="Number Ciphher™️", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
 
         # background handled by the app's global `bg_color`
@@ -92,15 +93,14 @@ class GamePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="Game Page", font=controller.title_font )
-        label.pack(pady=20)
 
         # background handled by the app's global `bg_color`
 
-        game_back_button = tk.Button(self, text="Back to Menu", command=lambda: controller.show_frame("StartPage"))
-        game_back_button.pack()
+        # Instantiate the NumberCipher game
+        self.game = NumberCipher(self)
 
-        # Add game logic and widgets here (e.g., entry for user input, submit button, etc.)
+        game_back_button = tk.Button(self, text="Back to Menu", command=lambda: [self.game.reset(), controller.show_frame("StartPage")])
+        game_back_button.pack()
 
 class CreditsPage(tk.Frame):
     """Credits page to displa
